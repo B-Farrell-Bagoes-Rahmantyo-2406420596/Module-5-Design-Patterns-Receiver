@@ -85,5 +85,7 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. Penggunaan RWLock mengizinkan multi-thread (banyak user) untuk membaca notifikasi sekaligus. Lock hanya berlaku antar situasi read dan write karena notifikasi ini lebih sering terjadi posisi read sehingga menguntungkan menggunakan rwlock. Sementara itu, mutex membatasi satu thread yang dapat mengakses data dalam satu waktu sehingga semua user tidak dapat membaca notifikasi sekaligus.  
+2. Di dalam Rust, static variables diinisiasi pada compile-time, struktur data seperti vec butuh runtime execution untuk mengalokasi memori. Di Rust juga, kita hanya dapat menggunakan banyak referensi ke immutable object atau satu refrensi ke mutable object. mutable static variable tidak diperbolehkan pada prinsip ini. Oleh karena kita menggunakan lazy_static untuk membypass kedua hal ini.
 
 #### Reflection Subscriber-2
