@@ -7,6 +7,7 @@ use rocket::tokio;
 use rocket::serde::json::to_string;
 
 use bambangshop_receiver::{Result, compose_error_response, APP_CONFIG, REQWEST_CLIENT};
+use crate::controller::notification::subscribe;
 use crate::model::notification::Notification;
 use crate::model::subscriber::SubscriberRequest;
 use crate::repository::notification::NotificationRepository;
@@ -91,4 +92,9 @@ impl NotificationService {
         return thread::spawn(move || Self::unsubscribe_request(product_type_clone))
             .join().unwrap();
     }  
+
+    pub fn receive_notification(payload: Notification) -> Result<Notification> {
+        let subscriber_result: Notification = NotificationRepository::add(payload);
+        return Ok(subscriber_result);
+    }
 }
