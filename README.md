@@ -77,7 +77,7 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [✓] Commit: `Implement receive function in Notification controller.`
     -   [✓] Commit: `Implement list_messages function in Notification service.`
     -   [✓] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [✓] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -89,3 +89,6 @@ This is the place for you to write reflections:
 2. Di dalam Rust, static variables diinisiasi pada compile-time, struktur data seperti vec butuh runtime execution untuk mengalokasi memori. Di Rust juga, kita hanya dapat menggunakan banyak referensi ke immutable object atau satu refrensi ke mutable object. mutable static variable tidak diperbolehkan pada prinsip ini. Oleh karena kita menggunakan lazy_static untuk membypass kedua hal ini.
 
 #### Reflection Subscriber-2
+1. Saya belum explore banyak, tetapi setelah pertanyaan ini saya mencoba sedikit. lib.rs saya simpulkan merupakan config-config/modul yang secara general dibutuhkan dibanyak tempat jadi dibuat semacam general common-nya. Di main.rs juga tempat ngeload enviromennya saya lihat.  
+2. Observer pattern dengan mudah membuat kita tidak perlu mengkhawatirkan implementasi method di receiver pada Main App. Main app hanya mengiterasi list of receiver yang kemudian mengimplementasikan fungsi receiver. Untuk kasus banyak main appsnya (Publisher/Subject) saya kurang mengetahui apakah bisa saja atau tidak, tetapi mungkin ada problem yang dapat muncul misal ada banyak main apps yang berusahan menotify observer yang sama.    
+3. Tidak saya tidak menerapkan test lain.
